@@ -14,7 +14,8 @@ public class Main {
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
     public static final String QUIT           = "Q";
-     public static final String GET_CONTACT_WITH_PHONE = "GN";
+    public static final String GET_CONTACT_WITH_PHONE = "GN";
+    public static final String CHECK_IF_PHONES_ARE_REPEATED = "CN";
 
     //Constantes que definem as mensagens para o utilizador
     public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
@@ -26,6 +27,8 @@ public class Main {
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
     public static final String PHONE_NUMBER_DOES_NOT_EXIST = "Phone number does not exist.";
+    public static final String PHONE_NUMBER_REPEATED = "Phone number is repeated.";
+    public static final String PHONE_NUMBER_NOT_REPEATED = "Phone number is not repeated.";
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -57,6 +60,9 @@ public class Main {
                     break;
                 case GET_CONTACT_WITH_PHONE:
                     getContactUsingPhone(in,cBook);
+                    break;
+                case CHECK_IF_PHONES_ARE_REPEATED:
+                    checkIfPhonesAreRepeated(in,cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -167,5 +173,14 @@ public class Main {
         }
         System.out.println(PHONE_NUMBER_DOES_NOT_EXIST);
     }
-    
-}
+
+    private static void checkIfPhonesAreRepeated(Scanner in, ContactBook cBook){
+
+            if(cBook.hasDupedPhone()){
+                System.out.println(PHONE_NUMBER_REPEATED);
+            }
+            System.out.println(PHONE_NUMBER_NOT_REPEATED);
+        }
+
+    }
+
