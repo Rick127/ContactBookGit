@@ -73,6 +73,16 @@ public class ContactBook {
         return result;
     }
 
+    private boolean hasDupedPhone(){
+        for (int i = 0; i < counter; i++){
+            int phone = contacts[i].getPhone();
+            for (int j = i+1; j < counter; j++)
+                if (contacts[j].getPhone() == phone)
+                    return true;
+        }
+        return false;
+    }
+
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
